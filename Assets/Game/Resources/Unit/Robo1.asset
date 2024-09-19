@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cbb50a475444b2aa113a5a014e3bcd, type: 3}
+  m_Name: Robo1
+  m_EditorClassIdentifier: 
+  name: Robo1
+  description: 
+  allySprite: {fileID: 21300000, guid: 96219e4379f7b408f8b683cbbfb10cfe, type: 3}
+  enemySprite: {fileID: 21300000, guid: 96219e4379f7b408f8b683cbbfb10cfe, type: 3}
+  maxHP: 80
+  en: 80
+  atk: 80
+  def: 80
+  spAtk: 80
+  spDef: 80
+  spd: 100
+  movesOfUnit:
+  - _base: {fileID: 11400000, guid: 6f210dbf511554a4486047fa99e16787, type: 2}
+  - _base: {fileID: 11400000, guid: 34decd0feee644deaac8c01f7d209354, type: 2}
+  - _base: {fileID: 11400000, guid: 276f828a4acef42fb977d5532a59d17e, type: 2}
