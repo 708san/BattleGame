@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dc8a95990a564dac89cca97d8e70bfe, type: 3}
-  m_Name: Move2
+  m_Name: Physical1
   m_EditorClassIdentifier: 
-  name: "\u62802"
+  name: "\u7269\u74061"
   description: 
-  power: 50
+  power: 40
   accuracy: 100
   cost: 10
+  skillType: 0

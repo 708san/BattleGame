@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Robo2
   description: 
-  allySprite: {fileID: 21300000, guid: c7ad71bea8f674cd5b7b393778ee50bd, type: 3}
-  enemySprite: {fileID: 21300000, guid: c7ad71bea8f674cd5b7b393778ee50bd, type: 3}
+  allySprite: {fileID: 21300000, guid: 44bfcaabca01a4c87824476708d276c8, type: 3}
+  enemySprite: {fileID: 21300000, guid: 6133aec9cc4384bb1bffe533eb6c2a7c, type: 3}
   maxHP: 120
-  en: 50
+  en: 60
   atk: 100
   def: 100
   spAtk: 30
@@ -26,3 +26,5 @@ MonoBehaviour:
   movesOfUnit:
   - _base: {fileID: 11400000, guid: 6f210dbf511554a4486047fa99e16787, type: 2}
   - _base: {fileID: 11400000, guid: 5143c7aa0fdbe4fe295f703784d7ceaa, type: 2}
+  - _base: {fileID: 11400000, guid: ebd7eed1b976c4677935b4dcffaf57b8, type: 2}
+  - _base: {fileID: 11400000, guid: f1354421c365c4e83803a104f3742467, type: 2}

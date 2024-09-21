@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3cbb50a475444b2aa113a5a014e3bcd, type: 3}
-  m_Name: Robo3
+  m_Name: Robo6
   m_EditorClassIdentifier: 
-  name: Robo3
+  name: Robo4
   description: 
-  allySprite: {fileID: 21300000, guid: d6a3370592c454593999fcdef4d9329f, type: 3}
-  enemySprite: {fileID: 21300000, guid: c7ad71bea8f674cd5b7b393778ee50bd, type: 3}
+  allySprite: {fileID: 21300000, guid: 88c29546ca3624e7187b66b714ff1e67, type: 3}
+  enemySprite: {fileID: 21300000, guid: 26bf0f387a1964e7ab63f033d484aa09, type: 3}
   maxHP: 90
   en: 100
-  atk: 40
-  def: 60
-  spAtk: 80
-  spDef: 45
-  spd: 140
+  atk: 100
+  def: 100
+  spAtk: 20
+  spDef: 20
+  spd: 40
   movesOfUnit:
   - _base: {fileID: 11400000, guid: 6f210dbf511554a4486047fa99e16787, type: 2}
-  - _base: {fileID: 11400000, guid: 34decd0feee644deaac8c01f7d209354, type: 2}
-  - _base: {fileID: 11400000, guid: 276f828a4acef42fb977d5532a59d17e, type: 2}
-  - _base: {fileID: 11400000, guid: 69d522a638ddc4bec870c3e25825a836, type: 2}
+  - _base: {fileID: 11400000, guid: 5143c7aa0fdbe4fe295f703784d7ceaa, type: 2}
+  - _base: {fileID: 11400000, guid: ebd7eed1b976c4677935b4dcffaf57b8, type: 2}
+  - _base: {fileID: 11400000, guid: f1354421c365c4e83803a104f3742467, type: 2}

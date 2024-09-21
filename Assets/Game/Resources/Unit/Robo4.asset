@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Robo4
   description: 
   allySprite: {fileID: 21300000, guid: 140131b361397426ba8a36859ee2f696, type: 3}
-  enemySprite: {fileID: 21300000, guid: 140131b361397426ba8a36859ee2f696, type: 3}
+  enemySprite: {fileID: 21300000, guid: d39df8661b74f4a1e980d50728f2f480, type: 3}
   maxHP: 90
   en: 100
   atk: 100
@@ -26,4 +26,4 @@ MonoBehaviour:
   movesOfUnit:
   - _base: {fileID: 11400000, guid: 6f210dbf511554a4486047fa99e16787, type: 2}
   - _base: {fileID: 11400000, guid: 5143c7aa0fdbe4fe295f703784d7ceaa, type: 2}
-  - _base: {fileID: 11400000, guid: 276f828a4acef42fb977d5532a59d17e, type: 2}
+  - _base: {fileID: 11400000, guid: a7b7af579b8574f4c93d021574ad23d6, type: 2}

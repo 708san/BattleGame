@@ -1434,9 +1434,11 @@ MonoBehaviour:
   playerBaseList:
   - {fileID: 11400000, guid: 41a946ccfb616488a9e1de45136ab7f7, type: 2}
   - {fileID: 11400000, guid: 4731ddb18d1804349a864175ffb77318, type: 2}
-  enemyBaseList:
   - {fileID: 11400000, guid: 031d896f69f7543c1bcdd46b0baeb906, type: 2}
+  enemyBaseList:
+  - {fileID: 11400000, guid: dbc2eccf3741e49a99581ca4fa1cbf49, type: 2}
   - {fileID: 11400000, guid: 5949d48356fe9437c9a5c5b017591520, type: 2}
+  - {fileID: 11400000, guid: 208f6d77b11ca426ebf301ef683ed48e, type: 2}
 --- !u!1 &1177009625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,7 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText: {fileID: 2098926121}
-  letterPerSecond: 15
+  letterPerSecond: 30
 --- !u!1 &1603351614
 GameObject:
   m_ObjectHideFlags: 0
