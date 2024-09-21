@@ -7,6 +7,7 @@ public class BattleHud : MonoBehaviour
 {
     [SerializeField]  Text nameText;
     [SerializeField]  HPBar hpBar;
+    [SerializeField] ENBar enBar;
 
     Unit _unit;
     public void SetData(Unit unit){
@@ -18,6 +19,11 @@ public class BattleHud : MonoBehaviour
     public IEnumerator UpdateHP(){
         yield return hpBar.SetHPSmooth((float)_unit.HP/_unit.MaxHP);
         
+    }
+    public IEnumerator UPdateEN(){
+        yield return enBar.SetENSmooth((float)_unit.NowEN/_unit.EN);
+      
+
     }
 
 }
