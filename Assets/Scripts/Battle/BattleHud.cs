@@ -19,6 +19,7 @@ public class BattleHud : MonoBehaviour
         yield return hpBar.SetHPSmooth((float)_unit.HP/_unit.MaxHP);
         
     }
+
 }
 
 

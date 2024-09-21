@@ -108,5 +108,30 @@ public class Unit//monobehavior使わない
 
 
     }
+    public void Charge(){
+        float e=0;
+        e=EN*0.4f;
+        Debug.Log($"e={e}");
+        if((NowEN+Mathf.FloorToInt(e))<EN){
+            NowEN+=Mathf.FloorToInt(e);
+        }
+        else{
+            NowEN=EN;
+        }
+        
+    }
+
+    public void Repair(){
+        Debug.Log("Now reparing..");
+        float e=0;
+        e=MaxHP*0.4f;
+        Debug.Log($"e={e}");
+        if((HP+Mathf.FloorToInt(e))<MaxHP){
+            HP+=Mathf.FloorToInt(e);
+        }
+        else{
+            HP=MaxHP;
+        }
+    }
 }
 
