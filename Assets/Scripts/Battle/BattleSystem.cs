@@ -11,12 +11,15 @@ public class BattleSystem : MonoBehaviour
     int enemyDone;
     int pIndex=0;
     int eIndex=0;
-    [SerializeField]BattleUnit playerUnit;
-    [SerializeField]BattleUnit enemyUnit;
+    [SerializeField] BattleUnit playerUnit;
+    [SerializeField] BattleUnit enemyUnit;
     [SerializeField] BattleHud playerHud;
     [SerializeField] BattleHud enemyHud;
     [SerializeField] BattleDialogBox dialogBox;
-    [SerializeField]  GameObject startButton; 
+    [SerializeField] GameObject startButton; 
+    [SerializeField] GameObject chargeButton; 
+    [SerializeField] GameObject  repairButton; 
+    
     [SerializeField] List<UnitBase> playerBaseList;
     [SerializeField] List<UnitBase> enemyBaseList;
     private void Start(){
@@ -36,6 +39,8 @@ public class BattleSystem : MonoBehaviour
         playerDone=0;
         enemyDone=0;
         startButton.SetActive(false);
+        chargeButton.SetActive(false);
+        repairButton.SetActive(false);
         if(playerUnit.Unit.Spd>=enemyUnit.Unit.Spd){
             StartCoroutine(StartPlayerMove());
         }
@@ -44,6 +49,39 @@ public class BattleSystem : MonoBehaviour
         }
         
     }
+
+    public void CallRepair(){
+         StartCoroutine(Repair_());
+    }
+    public void Charge_(){
+        playerDone=1;
+        enemyDone=0;
+        startButton.SetActive(false);
+        chargeButton.SetActive(false);
+        repairButton.SetActive(false);
+        Debug.Log($"EN:{playerUnit.Unit.NowEN}");
+        playerUnit.Unit.Charge();
+        Debug.Log($"EN:{playerUnit.Unit.NowEN}");
+        StartCoroutine(StartEnemyMove());
+    }
+
+    IEnumerator Repair_(){
+        playerDone=1;
+        enemyDone=0;
+        startButton.SetActive(false);
+        chargeButton.SetActive(false);
+        repairButton.SetActive(false);
+        yield return dialogBox.TypeDialog($"{playerUnit.Unit.Base.Name}は自己修復した");
+        yield return new WaitForSeconds(1);
+        Debug.Log($"HP:{playerUnit.Unit.HP}");
+        Debug.Log("Now preparing..");
+        playerUnit.Unit.Repair();
+        yield return playerHud.UpdateHP();
+        yield return new WaitForSeconds(1);
+        Debug.Log($"HP:{playerUnit.Unit.HP}");
+        StartCoroutine(StartEnemyMove());
+    }
+
     IEnumerator StartPlayerMove(){
         playerDone=1;
         Move playerMove=playerUnit.Unit.GetRandomMove();
@@ -113,6 +151,8 @@ public class BattleSystem : MonoBehaviour
     public void TurnStart(){
         StartCoroutine(dialogBox.TypeDialog("ターンを開始してください"));
         startButton.SetActive(true);
+        chargeButton.SetActive(true);
+        repairButton.SetActive(true);
     }
 
 
