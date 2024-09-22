@@ -14,6 +14,7 @@ public class BattleHud : MonoBehaviour
         _unit=unit;
         nameText.text=unit.Base.Name;
         hpBar.SetHP((float)unit.HP/unit.MaxHP);
+        enBar.SetEN((float)unit.NowEN/unit.EN);
     }
 
     public IEnumerator UpdateHP(){

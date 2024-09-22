@@ -53,15 +53,25 @@ public class BattleSystem : MonoBehaviour
     public void CallRepair(){
          StartCoroutine(Repair_());
     }
-    public void Charge_(){
+
+    public void CallCharge(){
+        StartCoroutine(Charge_());
+    }
+    
+    IEnumerator Charge_(){
         playerDone=1;
         enemyDone=0;
         startButton.SetActive(false);
         chargeButton.SetActive(false);
         repairButton.SetActive(false);
-        Debug.Log($"EN:{playerUnit.Unit.NowEN}");
+        
+        yield return dialogBox.TypeDialog($"{playerUnit.Unit.Base.Name}はチャージした");
+        yield return new WaitForSeconds(1);
+        
         playerUnit.Unit.Charge();
-        Debug.Log($"EN:{playerUnit.Unit.NowEN}");
+        yield return playerHud.UPdateEN();
+        yield return new WaitForSeconds(1);
+        Debug.Log($"HP:{playerUnit.Unit.NowEN}");
         StartCoroutine(StartEnemyMove());
     }
 
@@ -86,6 +96,7 @@ public class BattleSystem : MonoBehaviour
         playerDone=1;
         Move playerMove=playerUnit.Unit.GetRandomMove();
         yield return dialogBox.TypeDialog($"{playerUnit.Unit.Base.Name}は{playerMove.Base.Name}を使った");
+        yield return playerHud.UPdateEN();
         playerUnit.AttackAnimation();
         yield return new WaitForSeconds(1);
         enemyUnit.HitAnimation();
@@ -120,6 +131,7 @@ public class BattleSystem : MonoBehaviour
         enemyDone=1;
         Move enemyMove=enemyUnit.Unit.GetRandomMove();
         yield return dialogBox.TypeDialog($"{enemyUnit.Unit.Base.Name}は{enemyMove.Base.Name}を使った");
+        yield return enemyHud.UPdateEN();
         enemyUnit.AttackAnimation();
         yield return new WaitForSeconds(1);
         playerUnit.HitAnimation();
