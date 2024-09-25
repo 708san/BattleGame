@@ -11,6 +11,10 @@ public class Unit//monobehavior使わない
     public UnitBase Base{get;set;}
     int Level;
 
+    // @hayato
+    int TakeEN;
+   
+
     public int HP{get;set;}
 
     public int NowEN{get;set;}
@@ -81,7 +85,9 @@ public class Unit//monobehavior使わない
         }
     }
     
-    public bool TakeDamage(Move move, Unit attacker){
+    //@hayato buffのフラグを立てる
+    
+    public bool TakeDamage(Move move, Unit attacker,bool Buffrag, bool debuffrag){
         //揺らぎ
         float modifiers = UnityEngine.Random.Range(0.85f,1f);
         float d=0;
@@ -93,9 +99,29 @@ public class Unit//monobehavior使わない
             float a =(2*attacker.Level+10)/250f;
             d=a*move.Base.Power*((float)attacker.SpAtk/SpDef)+2;
         }
+        //@hayato
+        else if(move.Base.SkillType==MoveBase.CandidateSkillType.Buff){
+            return false;
+        }
+        else if(move.Base.SkillType==MoveBase.CandidateSkillType.Debuff){
+            return false;
+        }
         
         
         int damage =Mathf.FloorToInt(d*modifiers);
+        //@hayato ダメージ計算
+        
+        if(Buffrag == true && debuffrag == false){
+            
+            damage = Mathf.FloorToInt(d*1.2f*modifiers);
+            Debug.Log("バフ攻撃");         
+        }
+        else if(Buffrag == false && debuffrag == true){
+            damage = Mathf.FloorToInt(d*0.8f*modifiers);
+            Debug.Log("デバフ攻撃");
+        }
+        
+        
         HP-=damage;
         
         if(HP<=0){
@@ -132,6 +158,34 @@ public class Unit//monobehavior使わない
         else{
             HP=MaxHP;
         }
+    }
+    // @hayato
+    //現在のENゲージ取得+ゼロにする
+    public void ZeroEn(){
+        TakeEN = NowEN;
+        NowEN = 0;
+    }
+    // @hayato 
+    //チャージショットのダメージ計算（物理）
+
+    public bool SuperDamage(Unit attacker){
+        float modifiers = UnityEngine.Random.Range(0.85f,1f);
+        float d = 0;
+        float a = (2*attacker.Level+10)/250f;
+        d = a*20*((float)attacker.Atk/Def)+2;
+        int damage = Mathf.FloorToInt(d*modifiers);
+
+        HP-=damage+TakeEN;
+        
+        if(HP<=0){
+            HP=0;
+            return true;
+        }
+        else {
+            return false;
+        }
+
+
     }
 }
 
