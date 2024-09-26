@@ -8,6 +8,7 @@ using TMPro;
 public class BattleSystem : MonoBehaviour
 {
     public bool finished=false;
+    public Move playerMove;
     int playerDone;
     int enemyDone;
     int pIndex=0;
@@ -31,16 +32,20 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] List<UnitBase> playerBaseList;
     [SerializeField] List<UnitBase> enemyBaseList;
     private void Start(){
+        
         playerUnit.SetUp(playerBaseList[pIndex]);
         enemyUnit.SetUp(enemyBaseList[eIndex]);
         playerHud.SetData(playerUnit.Unit);
         enemyHud.SetData(enemyUnit.Unit);
         pIndex+=1;
         eIndex+=1;
-        StartCoroutine(dialogBox.TypeDialog("バトル開始!"));
+
+        playerMove=playerUnit.Unit.GetRandomMove();
+        StartCoroutine(dialogBox.TypeDialog($"次の行動:{playerMove.Base.Name}"));
 
     }
 
+    
     
 
     public void StartTurn(){
@@ -51,7 +56,7 @@ public class BattleSystem : MonoBehaviour
         repairButton.SetActive(false);
         ShotButton.SetActive(false);
         if(playerUnit.Unit.Spd>=enemyUnit.Unit.Spd){
-            StartCoroutine(StartPlayerMove());
+            StartCoroutine(StartPlayerMove(playerMove));
         }
         else{
             StartCoroutine(StartEnemyMove());
@@ -159,9 +164,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(StartEnemyMove());
     }
 
-    IEnumerator StartPlayerMove(){
+    IEnumerator StartPlayerMove(Move playerMove){
         playerDone=1;
-        Move playerMove=playerUnit.Unit.GetRandomMove();
+        
         yield return dialogBox.TypeDialog($"{playerUnit.Unit.Base.Name}は{playerMove.Base.Name}を使った");
         yield return playerHud.UPdateEN();
 
@@ -174,6 +179,7 @@ public class BattleSystem : MonoBehaviour
         else if(playerMove.Base.SkillType==MoveBase.CandidateSkillType.Debuff)
         {
             Enemy_debuff = true;
+            yield return new WaitForSeconds(1);
         }
         else{
            playerUnit.AttackAnimation();
@@ -203,6 +209,9 @@ public class BattleSystem : MonoBehaviour
                 eIndex+=1;
                 TurnStart();
             }
+            else{
+                StartCoroutine(dialogBox.TypeDialog($"You  Win!"));
+            }
 
         }
         else if(enemyDone==0){
@@ -228,10 +237,13 @@ public class BattleSystem : MonoBehaviour
         {
             Player_debuff = true;
         }
+        else{
+            enemyUnit.AttackAnimation();
+            yield return new WaitForSeconds(1);
+            playerUnit.HitAnimation();
 
-        enemyUnit.AttackAnimation();
-        yield return new WaitForSeconds(1);
-        playerUnit.HitAnimation();
+        }
+       
         bool isFainted =playerUnit.Unit.TakeDamage(enemyMove,enemyUnit.Unit,Enemy_buff,Enemy_debuff);
         yield return playerHud.UpdateHP();
         if(isFainted){
@@ -251,10 +263,14 @@ public class BattleSystem : MonoBehaviour
                 pIndex+=1;
                 TurnStart();
             }
+            else{
+                StartCoroutine(dialogBox.TypeDialog($"You  Lose..."));
+            }
+
 
         }
          else if(playerDone==0){
-            StartCoroutine(StartPlayerMove());
+            StartCoroutine(StartPlayerMove(playerMove));
         }
         else{
             TurnStart();
@@ -262,15 +278,18 @@ public class BattleSystem : MonoBehaviour
     }
 
     public void TurnStart(){
-        StartCoroutine(dialogBox.TypeDialog("ターンを開始してください"));
+        playerMove=playerUnit.Unit.GetRandomMove();
+        
         startButton.SetActive(true);
         chargeButton.SetActive(true);
         repairButton.SetActive(true);
         //@hayato
-        ShotButton.SetActive(true);
+        ShotButton.SetActive(false);
+
         if(playerUnit.Unit.NowEN == 0){
             ShotButton.SetActive(false);
         }
+        StartCoroutine(dialogBox.TypeDialog($"次の行動:{playerMove.Base.Name}"));
     }
 
 

@@ -25,6 +25,6 @@ MonoBehaviour:
   spd: 90
   movesOfUnit:
   - _base: {fileID: 11400000, guid: 6f210dbf511554a4486047fa99e16787, type: 2}
-  - _base: {fileID: 11400000, guid: 276f828a4acef42fb977d5532a59d17e, type: 2}
+  - _base: {fileID: 11400000, guid: 9789b4c02cf321241bd6b1f992091264, type: 2}
   - _base: {fileID: 11400000, guid: 77a3910bad9504e8ab4dd548df27438b, type: 2}
   - _base: {fileID: 11400000, guid: 69d522a638ddc4bec870c3e25825a836, type: 2}

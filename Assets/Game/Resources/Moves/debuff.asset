@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc8a95990a564dac89cca97d8e70bfe, type: 3}
   m_Name: debuff
   m_EditorClassIdentifier: 
-  name: "\u30C7\u30D0\u30D5"
+  name: "\u30B8\u30E3\u30DF\u30F3\u30B0"
   description: "\u30C0\u30E1\u30FC\u30B8\u3092\u4E0B\u3052\u308B"
   power: 0
   accuracy: 0
