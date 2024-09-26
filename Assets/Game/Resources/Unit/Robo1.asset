@@ -17,7 +17,7 @@ MonoBehaviour:
   allySprite: {fileID: 21300000, guid: 8040576eab9b74c489bd1cffeca31537, type: 3}
   enemySprite: {fileID: 21300000, guid: 96219e4379f7b408f8b683cbbfb10cfe, type: 3}
   maxHP: 80
-  en: 80
+  en: 100
   atk: 80
   def: 80
   spAtk: 80
@@ -30,4 +30,3 @@ MonoBehaviour:
   - _base: {fileID: 11400000, guid: 5143c7aa0fdbe4fe295f703784d7ceaa, type: 2}
   - _base: {fileID: 11400000, guid: ebd7eed1b976c4677935b4dcffaf57b8, type: 2}
   - _base: {fileID: 11400000, guid: a7b7af579b8574f4c93d021574ad23d6, type: 2}
-  - _base: {fileID: 11400000, guid: 9789b4c02cf321241bd6b1f992091264, type: 2}
